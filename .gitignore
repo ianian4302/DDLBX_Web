@@ -14,8 +14,10 @@ dist-ssr
 coverage
 *.local
 
-#ignore .firebaserc file
+# Firebase cache
+.firebase/
 .firebaserc
+firebase.json
 
 
 /cypress/videos/
