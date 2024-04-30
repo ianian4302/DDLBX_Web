@@ -15,9 +15,7 @@ coverage
 *.local
 
 # Firebase cache
-src/firebase/
-.firebaserc
-firebase.json
+
 
 
 /cypress/videos/
