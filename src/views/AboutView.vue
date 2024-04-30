@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     fetchMarkdown() {
-      fetch("./syntex.md") // 發送請求
+      fetch("./test.md") // 發送請求
         .then((res) => res.text()) // 將回應轉為文本格式
         .then((res) => {
           this.source = res; // 將回應設置到 data 中的 source 屬性中，Vue 會自動更新到畫面上

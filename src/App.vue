@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
 import Sidebar from "./components/SideBar.vue";
+
 </script>
 
 <template>
@@ -10,9 +11,12 @@ import Sidebar from "./components/SideBar.vue";
         <header>
             <RouterLink class="custom-link" to="/">Home</RouterLink>
             <RouterLink class="custom-link" to="/about">About</RouterLink>
+            <RouterLink class="custom-link" to="/leetcode">Leetcode</RouterLink>
+            
         </header>
         <body>
             <RouterView />
+            <!-- <Test/> -->
         </body>
     </main>
 </template>

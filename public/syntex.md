@@ -5,6 +5,7 @@
 In some languages like C++, you have to use semicolons to end lines of code. In DDLBX, you have to use exclamation marks!!
 
 ```dart
+testinfor
 print("Hello world")!
 ```
 
