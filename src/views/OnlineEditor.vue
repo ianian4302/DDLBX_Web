@@ -1,155 +1,126 @@
 <script setup>
-import { marked } from "marked";
-import { createApp } from "vue";
-import { ref } from "vue";
-import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
+import custom_button from "../components/button.vue";
+import { createApp, ref } from "vue";
+import {
+    GoogleGenerativeAI,
+    HarmCategory,
+    HarmBlockThreshold,
+} from "@google/generative-ai";
 
-const input_message = ref("");
-const compileMarkdown = input_message;
+const flag = ref("input from here:\n");
+const input_message = ref(`
+#include <iostream>
+using namespace std;
+int main(){
+    cout << 1 << endl;
+    return 0;
+}`);
+const compileMarkdown = ref("");
+//google generative ai
+const MODEL_NAME = "gemini-1.0-pro";
+const API_KEY = "AIzaSyAnpXYIZ4EqRlogVuxIa62_rlGQZPrpT8g";
+const genAI = new GoogleGenerativeAI(API_KEY);
+const model = genAI.getGenerativeModel({ model: MODEL_NAME });
 
-function say(message) {
-  alert(message);
+const generationConfig = {
+    temperature: 0.9,
+    topK: 1,
+    topP: 1,
+    maxOutputTokens: 2048,
+};
+
+const safetySettings = [
+    {
+        category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+        threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+    },
+    {
+        category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+        threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+    },
+    {
+        category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+        threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+    },
+    {
+        category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+        threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+    },
+];
+
+const generatedText = ref("");
+const prmpt =
+    "從現在開始你是一個c++的直譯器，你需要針對我給你的語法進行運算，並在print時印出正確的結果，標籤為：input from here:，如果錯誤請統一回答：error，如果有輸出請加上：>>>，如果沒有輸入就輸出空,告訴我錯哪裡\n";
+
+async function generateText() {
+    console.log("input_message.value:", input_message.value);
+    console.log("prmpt:", prmpt);
+    const parts = [{ text: prmpt + flag + input_message.value }]; // 可以根據需要更改文字部分
+    const result = await model.generateContent({
+        contents: [{ role: "user", parts }],
+        generationConfig,
+        safetySettings,
+    });
+    compileMarkdown.value = result.response.text();
 }
 </script>
 
 <template>
-  <hr />
-  <!-- <div class="multinle">Multiline message is:</div> -->
-  <p></p>
-  <textarea
-    id="input"
-    v-model="input_message"
-    placeholder="code input here"
-  ></textarea>
-  <textarea
-    id="ouput"
-    v-model="compileMarkdown"
-    placeholder="code onput here"
-  ></textarea>
-  <p></p>
-  <a href="javascript: void(0)" class="btn" @click="say('click')">>
-    <span>Button</span>
-    <svg width="13px" height="10px" viewBox="0 0 13 10">
-      <path d="M1,5 L11,5"></path>
-      <polyline points="8 1 12 5 8 9"></polyline>
-    </svg>
-  </a>
+    <hr />
+    <p></p>
+    <textarea
+        id="input"
+        v-model="input_message"
+        placeholder="code input here"
+    ></textarea>
+    <textarea
+        id="ouput"
+        v-model="compileMarkdown"
+        placeholder="code onput here"
+    ></textarea>
+    <p></p>
+    <div>
+        <button @click="generateText">生成文字</button>
+        <div v-if="generatedText">{{ generatedText }}</div>
+    </div>
+    <p></p>
 </template>
 
 <style>
 .multinle {
-  margin-top: 3px;
-  margin-bottom: 3px;
-  font-size: 20px;
-  color: #f5f1ed;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    font-size: 20px;
+    color: #f5f1ed;
 }
 #input {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  height: 500px;
-  font-size: 20px;
-  color: #feeeed;
-  background-color: #aa7673;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 500px;
+    font-size: 20px;
 }
 #ouput {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  height: 500px;
-  font-size: 20px;
-  color: #f3e9d3;
-  background-color: #d6a184;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 500px;
+    font-size: 20px;
 }
-
-.btn {
-    position: relative;
-    color: #111111;
-    font-size: 1rem;
-    text-transform: uppercase;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    padding: 12px 20px;
-    display: inline-flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-.btn:before {
-    content: "";
-    position: absolute;
-    top: -2;
-    left: 0;
-    display: block;
-    border-radius: 28px;
-    background: rgba(255, 171, 157, 0.5);
-    width: 56px;
-    height: 56px;
-    transition: all 0.3s ease;
-}
-.btn span {
-    position: relative;
-    z-index: 1;
-}
-.btn svg {
-    position: relative;
-    top: 0;
-    margin-left: 10px;
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke: #111111;
-    stroke-width: 2;
-    transform: translateX(-5px);
-    transition: all 0.3s ease;
-}
-.btn:hover:before {
-    width: 100%;
-    background: #FFAB9D;
-}
-.btn:hover svg {
-    transform: translateX(0);
-}
-.btn:hover,
-.btn:focus {
-    color: #111111;
-}
-.btn:active {
-    color: #111111;
-    transform: scale(0.96);
-}
-
 
 body,
 #editor {
-  margin: 0;
-  height: 100%;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  color: #333;
+    margin: 0;
+    height: 100%;
+    font-family: "Lucida Console", Courier, monospace;
+    color: #333;
 }
 
 textarea,
 #editor div {
-  display: inline-block;
-  width: 49%;
-  height: 100%;
-  vertical-align: top;
-  box-sizing: border-box;
-  padding: 0 20px;
-}
-
-textarea {
-  border: none;
-  border-right: 1px solid #ccc;
-  resize: none;
-  outline: none;
-  background-color: #f6f6f6;
-  font-size: 14px;
-  font-family: "Monaco", courier, monospace;
-  padding: 20px;
-}
-
-code {
-  color: #f66;
+    display: inline-block;
+    width: 49%;
+    height: 100%;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding: 0 20px;
 }
 </style>

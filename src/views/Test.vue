@@ -1,5 +1,4 @@
-<script setup>
-import { marked } from "marked";
+<script>
 import { createApp, ref } from "vue";
 import {
     GoogleGenerativeAI,
@@ -77,43 +76,26 @@ function addCharacter() {
 <template>
     <span>Multiline message is:</span>
     <p></p>
-    <textarea v-model="input_message" placeholder="code input here"></textarea>
-    <textarea
-        v-model="compileMarkdown"
-        placeholder="code onput here"
-    ></textarea>
+    <div class="input">
+        <div>1231232123ultiline messag</div>
+        <textarea
+            v-model="input_message"
+            placeholder="code input here"
+        ></textarea>
+        <textarea
+            v-model="compileMarkdown"
+            placeholder="code output here"
+        ></textarea>
+    </div>
+
     <p></p>
-    <button @click="say('click')">Say</button>
     <div>
         <button @click="generateText">生成文字</button>
         <div v-if="generatedText">{{ generatedText }}</div>
     </div>
-    <div>
-        <input type="text" v-model="inputText" @keydown="handleKeyDown" />
-        <button @click="addCharacter">加一個字</button>
-        <div>{{ resultText }}</div>
-    </div>
 </template>
 
 <style>
-body,
-#editor {
-    margin: 0;
-    height: 100%;
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    color: #333;
-}
-
-textarea,
-#editor div {
-    display: inline-block;
-    width: 49%;
-    height: 100%;
-    vertical-align: top;
-    box-sizing: border-box;
-    padding: 0 20px;
-}
-
 textarea {
     border: none;
     border-right: 1px solid #ccc;
@@ -121,8 +103,11 @@ textarea {
     outline: none;
     background-color: #f6f6f6;
     font-size: 14px;
-    font-family: "Monaco", courier, monospace;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
     padding: 20px;
+}
+input {
+    font-family: "Lucida Console", Courier, monospace;
 }
 
 code {

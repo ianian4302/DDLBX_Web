@@ -2,6 +2,7 @@
 import { RouterLink, RouterView } from "vue-router";
 import Sidebar from "./components/SideBar.vue";
 import Test from "./views/Test.vue";
+import onlineEditor from "./views/OnlineEditor.vue";
 
 </script>
 
@@ -10,14 +11,14 @@ import Test from "./views/Test.vue";
         <Sidebar />
 
         <header>
-            <!-- <RouterLink class="custom-link" to="/">Home</RouterLink>
+            <RouterLink class="custom-link" to="/">Home</RouterLink>
             <RouterLink class="custom-link" to="/about">About</RouterLink>
-            <RouterLink class="custom-link" to="/onlineEditor">Leetcode</RouterLink> -->
+            <RouterLink class="custom-link" to="/onlineEditor">Leetcode</RouterLink>
             
         </header>
         <body>
             <!-- <RouterView /> -->
-            <Test/>
+            <onlineEditor/>
         </body>
     </main>
 </template>
