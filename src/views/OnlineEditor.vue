@@ -2,6 +2,7 @@
 import { marked } from "marked";
 import { createApp } from "vue";
 import { ref } from "vue";
+import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
 
 const input_message = ref("");
 const compileMarkdown = input_message;
