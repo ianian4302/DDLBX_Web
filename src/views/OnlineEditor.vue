@@ -4,17 +4,23 @@ import { createApp } from "vue";
 import { ref } from "vue";
 
 const input_message = ref("");
-const compileMarkdown = input_message
+const compileMarkdown = input_message;
+
+function say(message) {
+  alert(message)
+}
 </script>
 
 <template>
     <span>Multiline message is:</span>
     <p></p>
+    <textarea v-model="input_message" placeholder="code input here"></textarea>
     <textarea
-        v-model="input_message"
-        placeholder="code input here"
+        v-model="compileMarkdown"
+        placeholder="code onput here"
     ></textarea>
-    <textarea v-model="compileMarkdown"></textarea>
+    <p></p>
+    <button @click="say('click')">Say</button>
 </template>
 
 <style>

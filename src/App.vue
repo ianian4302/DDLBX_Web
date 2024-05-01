@@ -11,7 +11,7 @@ import Sidebar from "./components/SideBar.vue";
         <header>
             <RouterLink class="custom-link" to="/">Home</RouterLink>
             <RouterLink class="custom-link" to="/about">About</RouterLink>
-            <RouterLink class="custom-link" to="/leetcode">Leetcode</RouterLink>
+            <RouterLink class="custom-link" to="/onlineEditor">Leetcode</RouterLink>
             
         </header>
         <body>
