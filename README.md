@@ -33,3 +33,9 @@ npm run build
 ```sh
 firebase deploy
 ```
+
+### Flask Server
+
+```sh
+python app.py
+```
