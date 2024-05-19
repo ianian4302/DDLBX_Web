@@ -1,6 +1,6 @@
 # Contribute
 ---
-##  advising professor
+##  Advising Professor
 *   **Zhang Yushan**
 ##  Members
 *   **Song Hongsheng**

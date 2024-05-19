@@ -1,24 +1,15 @@
 <script setup>
-import { ref } from "vue";
 import { MdPreview, MdCatalog } from "md-editor-v3";
-import Markdown from "vue3-markdown-it";
 
 const id = "preview-only";
-const text = ref("# Hello Editor");
-const scrollElement = document.documentElement;
+
 </script>
 <template>
-    <div class="prview">
-        <MdPreview :editorId="id" :modelValue="source" />
-        <MdCatalog :editorId="id" :scrollElement="scrollElement" />
-    </div>
+    <MdPreview :editorId="id" :modelValue="source" />
 </template>
 
 <script>
 export default {
-    components: {
-        Markdown,
-    },
     data() {
         return {
             source: " ",
@@ -43,5 +34,8 @@ export default {
 </script>
 
 <style>
-
+.md-editor {
+    height: 100vh;
+    background-color: transparent;
+}
 </style>

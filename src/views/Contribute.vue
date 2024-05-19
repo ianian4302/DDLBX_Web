@@ -1,8 +1,5 @@
 <template>
-    <div class="prview">
-        <MdPreview :editorId="id" :modelValue="source" />
-        <MdCatalog :editorId="id" :scrollElement="scrollElement" />
-    </div>
+    <MdPreview :editorId="id" :modelValue="source" />
 </template>
 
 <script setup>
@@ -44,4 +41,8 @@ export default {
 </script>
 
 <style>
+.md-editor {
+    height: 100vh;
+    background-color: transparent;
+}
 </style>
