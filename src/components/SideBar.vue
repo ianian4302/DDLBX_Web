@@ -24,41 +24,37 @@ const toggleSidebar = () => {
                 <li class="list-item active">
                     <RouterLink to="/">
                         <i class="bx bx-grid-alt"></i>
-                        <span class="link-name" style="--i: 1"> DashBoard</span>
+                        <span class="link-name" style="--i: 1"> Main</span>
                     </RouterLink>
                 </li>
 
                 <li class="list-item">
-                    <a href="#">
-                        <i class="bx bx-user"></i>
-                        <span class="link-name" style="--i: 2"> Reference</span>
-                    </a>
+                    <RouterLink to="/document">
+                        <i class="bx bxs-book-open"></i>
+                        <span class="link-name" style="--i: 2"> Document</span>
+                    </RouterLink>
                 </li>
                 <li class="list-item">
-                    <a href="#">
-                        <i class="bx bx-message-detail"></i>
-                        <span class="link-name" style="--i: 3"> Messages</span>
-                    </a>
-                </li>
-                <li class="list-item">
-                    <a href="#">
-                        <i class="bx bx-cog"></i>
-                        <span class="link-name" style="--i: 4"> Setting</span>
-                    </a>
-                </li>
-                <li class="list-item">
-                    <a href="#">
-                        <i class="bx bx-help-circle"></i>
-                        <span class="link-name" style="--i: 6"> Help</span>
-                    </a>
-                </li>
-                <li class="list-item">
-                    <a href="#">
-                        <i class="bx bx-help-circle"></i>
-                        <span class="link-name" style="--i: 7">
-                            File manager</span
+                    <RouterLink to="/onlineEditor">
+                        <i class="bx bx-code-block"></i>
+                        <span class="link-name" style="--i: 3">
+                            Online Compiler</span
                         >
-                    </a>
+                    </RouterLink>
+                </li>
+                <li class="list-item">
+                    <RouterLink to="/contribute">
+                        <i class="bx bx-donate-heart"></i>
+                        <span class="link-name" style="--i: 4">
+                            Contribute</span
+                        >
+                    </RouterLink>
+                </li>
+                <li class="list-item">
+                    <RouterLink to="/test">
+                        <i class="bx bx-cog"></i>
+                        <span class="link-name" style="--i: 4"> Test</span>
+                    </RouterLink>
                 </li>
             </ul>
         </nav>
@@ -70,8 +66,6 @@ const toggleSidebar = () => {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-}
-body {
 }
 .sidebar {
     position: fixed;
@@ -97,7 +91,7 @@ body {
 .sidebar .logo-menu .logo {
     caret-color: transparent;
     font-size: 25px;
-    color: #fff;
+    color: #000000;
     pointer-events: none;
     opacity: 0;
     transition: 0.3s;
@@ -114,7 +108,7 @@ body {
     width: 40px;
     height: 40px;
     text-align: center;
-    color: #fff;
+    color: #000000;
     line-height: 40px;
     font-size: 22px;
     cursor: pointer;
@@ -137,7 +131,7 @@ body {
     display: flex;
     align-items: center;
     font-size: 18px;
-    color: #fff;
+    color: #000000;
     text-decoration: none;
     border-radius: 6px;
     white-space: nowrap;
