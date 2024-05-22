@@ -14,9 +14,6 @@ const scrollElement = document.documentElement;
 
 <script>
 export default {
-    components: {
-        Markdown,
-    },
     data() {
         return {
             source: " ",
