@@ -4,26 +4,37 @@ import { MdEditor } from "md-editor-v3";
 import "md-editor-v3/lib/style.css";
 
 const text = ref("# Hello Editor");
-const FilePath = ref("test.txt");
 </script>
 <script>
 export default {
     data() {
         return {
-            code: "",
+            code: 
+`
+extern fun println(s: Str): Non
+extern fun read(): Str
+
+fun main(): Non {
+    var s = '123'!
+    println(s)!    
+}
+`,
             result: "Output:\n",
         };
     },
     methods: {
         async sendCode() {
             try {
-                const response = await fetch("http://127.0.0.1:5000/compile", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ code: this.code }),
-                });
+                const response = await fetch(
+                    "http://34.80.112.223:5000/compile",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({ code: this.code }),
+                    }
+                );
                 const data = await response.json();
                 this.result = data.result;
             } catch (error) {
@@ -47,7 +58,6 @@ export default {
 </template>
 
 <style>
-
 .title {
     display: flex;
     margin-top: 20px;
