@@ -12,5 +12,11 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  server: {
+    host: '0.0.0.0', // 綁定到所有網卡
+    port: 5173, // 你想要的端口
   }
 })
+
+
