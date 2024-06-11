@@ -54,7 +54,6 @@ fetchMarkdown(8, "./example/trait.md");
 
 <style>
 .md-editor {
-    height: 100%;
     background-color: transparent;
 }
 h2 {
