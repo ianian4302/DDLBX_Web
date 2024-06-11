@@ -2,8 +2,11 @@
     <div class="out">
         <div v-for="(item, index) in items" :key="index">
             <h2>{{ item.title }}</h2>
-            <MdPreview :editorId="`preview-${index}`" :modelValue="item.source" />
-            <hr class="divider"/>
+            <MdPreview
+                :editorId="`preview-${index}`"
+                :modelValue="item.source"
+            />
+            <hr class="divider" />
         </div>
     </div>
 </template>
@@ -22,7 +25,7 @@ const items = ref([
     { title: "Simple Object", source: "" },
     { title: "Simple Statement", source: "" },
     { title: "Template", source: "" },
-    { title: "Trait", source: "" }
+    { title: "Trait", source: "" },
 ]);
 
 // 定義 fetchMarkdown 函數來加載 Markdown 文件
@@ -51,9 +54,10 @@ fetchMarkdown(8, "./example/trait.md");
 
 <style>
 .md-editor {
+    height: 100%;
     background-color: transparent;
 }
-h2{
+h2 {
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 1rem;

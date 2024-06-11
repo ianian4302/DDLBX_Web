@@ -35,7 +35,6 @@ export default {
 
 <style>
 .md-editor {
-    height: 100vh;
     background-color: transparent;
 }
 </style>
