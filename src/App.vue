@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
 import Sidebar from "./components/SideBar.vue";
+import "md-editor-v3/lib/style.css";
 </script>
 
 <template>

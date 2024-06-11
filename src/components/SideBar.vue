@@ -35,9 +35,15 @@ const toggleSidebar = () => {
                     </RouterLink>
                 </li>
                 <li class="list-item">
+                    <RouterLink to="/example">
+                        <i class='bx bx-file-find'></i>
+                        <span class="link-name" style="--i: 3"> Example</span>
+                    </RouterLink>
+                </li>
+                <li class="list-item">
                     <RouterLink to="/onlineEditor">
                         <i class="bx bx-code-block"></i>
-                        <span class="link-name" style="--i: 3">
+                        <span class="link-name" style="--i: 4">
                             Online Compiler</span
                         >
                     </RouterLink>
@@ -45,15 +51,9 @@ const toggleSidebar = () => {
                 <li class="list-item">
                     <RouterLink to="/contribute">
                         <i class="bx bx-donate-heart"></i>
-                        <span class="link-name" style="--i: 4">
+                        <span class="link-name" style="--i: 5">
                             Contribute</span
                         >
-                    </RouterLink>
-                </li>
-                <li class="list-item">
-                    <RouterLink to="/test">
-                        <i class="bx bx-cog"></i>
-                        <span class="link-name" style="--i: 4"> Test</span>
                     </RouterLink>
                 </li>
             </ul>

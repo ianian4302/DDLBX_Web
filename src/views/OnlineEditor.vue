@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from "vue";
 import { MdEditor } from "md-editor-v3";
-import "md-editor-v3/lib/style.css";
 
 const text = ref("# Hello Editor");
 </script>
@@ -9,17 +8,15 @@ const text = ref("# Hello Editor");
 export default {
     data() {
         return {
-            code: 
-`
+            code: `
 extern fun println(s: Str): Non
 extern fun read(): Str
 
 fun main(): Non {
-    var s = '123'!
-    println(s)!    
+    println('Hello world!')!    
 }
 `,
-            result: "Output:\n",
+            result: "Output here\n",
         };
     },
     methods: {
@@ -38,14 +35,14 @@ fun main(): Non {
                 const data = await response.json();
                 this.result = data.result;
             } catch (error) {
-                console.error("Error:", error);
+                
             }
         },
     },
 };
 </script>
 <template>
-    <div class="title">
+    <div class="title-input">
         <h1 class="Inheader">Input Field</h1>
         <h1 class="Outheader">Output Field</h1>
     </div>
@@ -58,13 +55,13 @@ fun main(): Non {
 </template>
 
 <style>
-.title {
+.title-input {
     display: flex;
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 20px;
 }
-.title h1 {
+.title-input h1 {
     width: 49%;
     text-align: left;
 }

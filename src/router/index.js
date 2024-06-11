@@ -26,7 +26,12 @@ const router = createRouter({
             path: "/contribute",
             name: "contribute",
             component: () => import("../views/Contribute.vue"),
-        }
+        },
+        {
+            path: "/example",
+            name: "example",
+            component: () => import("../views/Example.vue"),
+        },
     ],
 });
 
