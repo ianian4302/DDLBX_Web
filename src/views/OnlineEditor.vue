@@ -9,9 +9,6 @@ export default {
     data() {
         return {
             code: `
-extern fun println(s: Str): Non
-extern fun read(): Str
-
 fun main(): Non {
     println('Hello world!')!    
 }
